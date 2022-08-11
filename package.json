@@ -1,13 +1,13 @@
 {
-  "name": "hexo-butterfly-swiper",
-  "version": "1.0.12",
+  "name": "hexo-butterfly-swiper-allbs",
+  "version": "1.0.8",
   "description": "A Slideshow  plugin for theme-butterfly based on swiper",
   "main": "index.js",
   "scripts": {
     "eslint": "eslint ."
   },
   "directories": {
-    "lib": "./lib"
+    "lib": "lib"
   },
   "files": [
     "lib/",
@@ -22,13 +22,18 @@
     "theme-butterfly",
     "plugins"
   ],
-  "author": "akilarlxh",
+  "author": "cq92104",
   "license": "Apache-2.0",
   "dependencies": {
     "pug": "^3.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Akilarlxh/hexo-butterfly-swiper.git"
-  }
+    "url": "git+https://github.com/chenqi92/hexo-butterfly-swiper-allbs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chenqi92/hexo-butterfly-swiper-allbs/issues"
+  },
+  "homepage": "https://github.com/chenqi92/hexo-butterfly-swiper-allbs#readme",
+  "devDependencies": {}
 }
