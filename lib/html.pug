@@ -1,13 +1,14 @@
 .recent-post-item(style='height: auto;width: 100%')
   //- 文章容器
   #swiper_container.blog-slider.swiper-container-fade.swiper-container-horizontal
-    .blog-slider__wrp.swiper-wrapper.feature-article(style='transition-duration: 0ms;')
+    .blog-slider__wrp.feature-article.swiper-wrapper(style='transition-duration: 0ms;')
       //- 文章卡片
       if pjaxenable
         each item in swiper_list
           .blog-slider__item.swiper-slide(style='width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;')
             .feature-thumbnail
-              img.ob-hz-thumbnail(src=item.cover)
+              a.blog-slider__img(href=item.path  alt='')
+                img.ob-hz-thumbnail(width='48' height='48'  src=item.cover alt='' onerror=`this.src=` + error_img + `; this.onerror = null;`)
               span.thumbnail-screen(style='background: linear-gradient(130deg, rgb(36, 198, 220), rgb(84, 51, 255) 41.07%, rgb(255, 0, 153) 76.05%);')
             .feature-content
               a(href=item.path)
@@ -19,19 +20,21 @@
                     strong.text-ob-normal.strong-swapper=item.author = '发布于 ' + item.date.format('YYYY年MM月DD日')
       else
         each item in swiper_list
-          .blog-slider__item.swiper-slide.feature-article(style='width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;')
+          .blog-slider__item.feature-article.swiper-slide(style='width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;')
             .feature-thumbnail
-              img.ob-hz-thumbnail(src=item.cover)
+              a.blog-slider__img(href=item.path  alt='')
+                img.ob-hz-thumbnail(width='48' height='48'  src=item.cover alt='' onerror=`this.src=` + error_img + `; this.onerror = null;`)
               span.thumbnail-screen(style='background: linear-gradient(130deg, rgb(36, 198, 220), rgb(84, 51, 255) 41.07%, rgb(255, 0, 153) 76.05%);')
-            .feature-content
+            .feature-content.blog-slider__content
               a(href=item.path)
                 h1(data-dia='article-link')=item.title
               p=item.description ? item.description : default_descr
               .article-footer
                 .flex.flex-row.items-center
                   span.text-ob-dim
-                    strong.text-ob-normal.strong-swapper=item.author='发布于 ' + item.date.format('YYYY年MM月DD日')
-
-
+                    if (timemode === 'updated')
+                      strong.text-ob-normal.strong-swapper=item.author='更新于 ' + item.date.format('YYYY年MM月DD日')
+                    else
+                      strong.text-ob-normal.strong-swapper=item.author='创建于 ' + item.date.format('YYYY年MM月DD日')
     //- 轮播图组件
     .blog-slider__pagination.swiper-pagination-clickable.swiper-pagination-bullets
