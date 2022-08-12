@@ -13,11 +13,14 @@
             .feature-content
               a(href=item.path)
                 h1(data-dia='article-link')=item.title
-              p=item.description ? item.description : default_descr
+              p=item.description ? item.description : item.subContent
               .article-footer
                 .flex.flex-row.items-center
                   span.text-ob-dim
-                    strong.text-ob-normal.strong-swapper=item.author = '发布于 ' + item.date.format('YYYY年MM月DD日')
+                    if (timemode === 'updated')
+                      strong.text-ob-normal.strong-swapper=item.author = '最后更新时间 ' + item.updated.format('YYYY年MM月DD日')
+                    else
+                      strong.text-ob-normal.strong-swapper=item.author = '创建时间 ' + item.date.format('YYYY年MM月DD日')
       else
         each item in swiper_list
           .blog-slider__item.feature-article.swiper-slide(style='width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;')
@@ -28,13 +31,13 @@
             .feature-content.blog-slider__content
               a(href=item.path)
                 h1(data-dia='article-link')=item.title
-              p=item.description ? item.description : default_descr
+              p=item.description ? item.description : item.subContent
               .article-footer
                 .flex.flex-row.items-center
                   span.text-ob-dim
                     if (timemode === 'updated')
-                      strong.text-ob-normal.strong-swapper=item.author='更新于 ' + item.date.format('YYYY年MM月DD日')
+                      strong.text-ob-normal.strong-swapper=item.author='最后更新时间 ' + item.updated.format('YYYY年MM月DD日')
                     else
-                      strong.text-ob-normal.strong-swapper=item.author='创建于 ' + item.date.format('YYYY年MM月DD日')
+                      strong.text-ob-normal.strong-swapper=item.author='创建时间 ' + item.date.format('YYYY年MM月DD日')
     //- 轮播图组件
     .blog-slider__pagination.swiper-pagination-clickable.swiper-pagination-bullets
